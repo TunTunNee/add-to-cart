@@ -1,0 +1,91 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    height: 100vh;
+    /* margin: 10px; */
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid;
+
+    .product-cart{
+        /* margin: 0px auto; */
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 30px;
+    }
+}
+.products{
+    margin: 0px auto;
+    position: relative;
+    #price{
+        color: hsl(14, 86%, 42%);
+    }
+
+    #productImgs{
+        width: 300px;
+        border-radius: 30px;
+    }
+
+}
+
+.addToCart{
+    font-size: 10px;
+    background-color: white;
+    position: absolute;
+    top: 250px;
+    right: 80px;
+    width: 150px;
+    height: 50px;
+    font-size: 30px;
+    border-radius: 20px;
+    border: 1px solid red;
+    font-size:medium
+}
+.sum{
+    background-color: red;
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    width: 100px;
+    position: absolute;
+    top: 250px;
+    right: 80px;
+    width: 150px;
+    font-size: 30px;
+    border-radius: 20px;
+    border: 1px solid white;
+
+}
+/* number between the add and subtraction */
+.calc{
+    color: white;
+    padding: 10px;
+}
+.sum{
+    display: none;
+}
+.cart{
+    background-color: white;
+    width: 300px;
+    /* position: absolute; */
+    /* top: 0px; */
+    /* right: 0px; */
+    height: fit-content;
+    border: 1px solid;
+    font-size: 20px;
+    background-color: rgb(179, 245, 184);
+
+    .itemDetails{
+        display: flex;
+        border: 1px solid;
+        justify-content: space-between;
+    }
+}
+

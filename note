@@ -1,0 +1,120 @@
+// designing the ui
+let cartApi = "./data.json"
+fetch(cartApi)
+.then(response=>
+    response.json())
+.then(data=>{
+      let card = ""
+    data.map((i)=>{
+      card +=`<div class="products" data-category="${i.category}">
+      <img src="${i.image.desktop}" alt=""/>
+        <button class="purchase" onclick="addToCart('${i.category}', '${i.name}', '${i.price}')">Add to Cart</button>
+        <button class="sum">
+        <img src="assets/images/icon-increment-quantity.svg" onclick="increment('${i.category}')"/>  
+        <p class="topUp">0</p> 
+        <img src="assets/images/icon-decrement-quantity.svg" onclick="decrement('${i.category}')"/>       
+        </button>
+        <p id="category">${i.category}</p>
+      <p id="name"><b>${i.name}</b></p>
+      <p id="price"><b>$${i.price.toFixed(2)}</b></p>
+      </div>`
+    })
+    document.querySelector(".product-cart").innerHTML=card;
+    
+})
+
+
+
+
+
+
+// Global cart variable for cart items
+let cart = document.querySelector(".cart span");
+console.log(cart)
+
+
+
+let itemName=document.querySelector("#category")
+console.log(itemName);
+
+
+
+// Add to Cart function with a check to prevent duplicates
+let cartItems = new Set();
+function addToCart(category, name, price) {
+  if (cartItems.has(category)) {
+    // Product is already in the cart
+    alert(`${name} is already in your cart.`);
+  } else {
+    // Add the product to the cart
+    cartItems.add(category);
+    console.log(`${name} added to cart at $${price}.`)
+    itemName.innerHTML +=`<li>${category} $${price}</li>`
+    
+    // Update the cart visually (this is where you'd append to a cart display)
+    cart.textContent = parseInt(cart.textContent) + 1;
+
+    // Example: Update a list of cart items (not in the current code but assumed)
+    let cartList = document.querySelector(".cart-list");
+    cartList.innerHTML += `<li>${name} - $${price.toFixed(2)}</li>`;
+  }
+}
+
+
+// with others
+// // // add to cart function
+// // function addToCart(category) {
+// //   console.log(`Item from category ${category} added to cart.`);
+// //   itemName.textContent=`${category}`
+
+// // }
+
+// // Increment quantity for individual items
+// function increment(category) {
+//   const productElement = document.querySelector(`[data-category="${category}"]`);
+//   const topUpElement = productElement.querySelector(".topUp");
+
+//    // Get the current quantity and increment it
+//    let quantity = parseInt(topUpElement.textContent);
+//    topUpElement.textContent ++;
+
+//    cart.textContent = parseInt(cart.textContent) + 1;
+//  }
+
+// //  decrement
+// function decrement(category) {
+//   const productElement = document.querySelector(`[data-category="${category}"]`);
+//   const topUpElement = productElement.querySelector(".topUp");
+
+//    // Get the current quantity and increment it
+//    let quantity = parseInt(topUpElement.textContent);
+//    if (quantity > 0) {
+//      topUpElement.textContent =  quantity -1;
+//      cart.textContent = parseInt(cart.textContent) -1;
+//    }
+//  }
+
+
+
+
+let card = ""
+    data.map((i)=>{
+      card +=
+      `<div class="products">
+        <img src="${i.image.desktop}" alt=""/ id="productImgs">
+        <div class="inc_dec_btns">
+          <button class="addToCart">Add to Cart</button>
+          <button class="sum">
+            <img src="assets/images/icon-increment-quantity.svg"/ id="add">  
+            <p class="calc">0</p> 
+            <img src="assets/images/icon-decrement-quantity.svg"/ id="subtract">       
+          </button>
+        </div>
+        <p id="category">${i.category}</p>
+        <p id="name"><b>${i.name}</b></p>
+        <p id="price"><b>$${i.price.toFixed(2)}</b></p>
+      </div>`
+    })
+    document.querySelector(".product-cart").innerHTML=card;
+    
+})
