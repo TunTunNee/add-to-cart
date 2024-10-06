@@ -48,7 +48,7 @@ body{
     font-size:medium
 }
 .sum{
-    background-color: red;
+    background-color: orangered;
     display: flex;
     justify-content: space-around;
     height: 50px;
